@@ -73,4 +73,13 @@ class ApiController extends Controller
         $user = JWTAuth::toUser($request->token);        
         return response()->json(['result' => $user]);
     }
+
+    public function logout(Request $request){
+        
+      // JWTAuth::logout();
+       //JWTAuth::getToken();
+       JWTAuth::invalidate(JWTAuth::getToken());
+       return;
+    }
 }
+

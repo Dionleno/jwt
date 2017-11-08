@@ -20,7 +20,7 @@ class VerifyJWToken
           
 
       try {
-            $user = JWTAuth::toUser($request->input('token'));
+            $user = JWTAuth::setRequest($request)->parseToken();
         } catch (Exception $e) {
             if ($e instanceof \Tymon\JWTAuth\Exceptions\TokenInvalidException){
                 return response()->json(['error'=>'Token is Invalid']);
